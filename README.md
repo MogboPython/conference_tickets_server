@@ -62,7 +62,8 @@ ticket-generator/
 │
 ├── main.py           # FastAPI server
 ├── schema.py         # Configuration schemas
-├── ticket_generator.py  # Ticket generation logic
+├── ticket.py  # Ticket generation logic
+├── service_configs.py  # Configuration for services
 ├── static/           # Ticket templates and fonts
 │   ├── ysf-2022/
 │   └── nexlds-ife/
