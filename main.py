@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from mangum import Mangum
 from ticket import generate_delegate_ticket
 
 app = FastAPI()
@@ -18,7 +19,7 @@ app.add_middleware(
 async def generate_ticket(
     first_name: str,
     last_name: str,
-    service: str = Path(..., description="The service to generate ticket for")
+    service: str = Path(..., description="The service to generate ticket for (I just have 'nexlds-ife' and 'ysf-2022' for now)")
 ):
     
     doc_io, file_name = generate_delegate_ticket(service, first_name, last_name)
@@ -32,5 +33,9 @@ async def generate_ticket(
         media_type="image/png"
     )
 
+# AWS Lambda handler
+lambda_handler = Mangum(app)
+
 if __name__ == "__main__":
-    app.run()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

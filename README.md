@@ -4,6 +4,11 @@
 
 A FastAPI-powered service for generating personalized conference tickets with dynamic image manipulation using Pillow.
 
+## Live Deployment on AWS
+```
+https://c8ffygl2f3.execute-api.us-east-1.amazonaws.com/docs
+```
+
 ## Features
 
 - 🎫 Generate custom tickets for multiple conferences
@@ -60,12 +65,15 @@ GET /api/{service}/generate-ticket?first_name=John&last_name=Doe
 ```
 ticket-generator/
 │
-├── main.py           # FastAPI server
-├── schema.py         # Configuration schemas
-├── ticket.py  # Ticket generation logic
-├── service_configs.py  # Configuration for services
-├── static/           # Ticket templates and fonts
+├── main.py                 # FastAPI server
+├── schema.py               # Configuration schemas
+├── ticket.py               # Ticket generation logic
+├── service_configs.py      # Configuration for services
+├── infra/                  # AWS infrastructure code with Pulumi
+├── static/                 # Ticket templates and fonts
 │   ├── ysf-2022/
 │   └── nexlds-ife/
+├── Dockerfile              # Holds the container image I used in deploying
+├── lambda_entrypoint.sh    # Bash configuration for starting up the app
 └── requirements.txt
 ```

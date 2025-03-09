@@ -1,4 +1,6 @@
-fastapi
-uvicorn
+fastapi==0.68.0
+mangum==0.17.0
+uvicorn==0.15.0
+awslambdaric==3.0.2
 pillow
 pydantic
